@@ -49,20 +49,11 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background pb-24">
-      {/* Header */}
+      {/* Header - Removed sign out button from header */}
       <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-6 sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold">Health Vault</h1>
-            <p className="text-blue-100 text-sm">{user?.email}</p>
-          </div>
-          <Button
-            onClick={handleSignOut}
-            variant="outline"
-            className="bg-white text-blue-600 hover:bg-blue-50 border-0"
-          >
-            Sign Out
-          </Button>
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-2xl font-bold">Health Vault</h1>
+          <p className="text-blue-100 text-sm">{user?.email}</p>
         </div>
       </div>
 
@@ -88,6 +79,16 @@ export default function Dashboard() {
             </div>
           </TabsContent>
         </Tabs>
+
+        <div className="mt-12 pt-6 border-t border-border">
+          <Button
+            onClick={handleSignOut}
+            variant="outline"
+            className="w-full text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200 bg-transparent"
+          >
+            Sign Out
+          </Button>
+        </div>
       </div>
     </div>
   )

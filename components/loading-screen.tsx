@@ -1,22 +1,39 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function LoadingScreen() {
   const [showText, setShowText] = useState(false)
+  const [showLoader, setShowLoader] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
-    // Show text after 1.5 seconds
-    const timer = setTimeout(() => {
+    // Show text after 1.5 seconds (logo displays for 1.5 sec)
+    const textTimer = setTimeout(() => {
       setShowText(true)
     }, 1500)
 
-    return () => clearTimeout(timer)
-  }, [])
+    // Show loading animation after 2.5 seconds (text displays for 1 sec)
+    const loaderTimer = setTimeout(() => {
+      setShowLoader(true)
+    }, 2500)
+
+    // Redirect to app after 5.5 seconds total (loading animation shows for 3 sec)
+    const redirectTimer = setTimeout(() => {
+      router.push("/dashboard")
+    }, 5500)
+
+    return () => {
+      clearTimeout(textTimer)
+      clearTimeout(loaderTimer)
+      clearTimeout(redirectTimer)
+    }
+  }, [router])
 
   return (
     <div className="fixed inset-0 bg-gradient-to-b from-slate-900 to-slate-800 flex flex-col items-center justify-center">
-      {/* Logo Container */}
+      {/* Logo Container - Always visible first */}
       <div className="mb-8 animate-fade-in">
         <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl">
           <svg className="w-16 h-16 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
@@ -25,7 +42,7 @@ export default function LoadingScreen() {
         </div>
       </div>
 
-      {/* Welcome Text */}
+      {/* Welcome Text - Shows after 1.5 seconds */}
       {showText && (
         <div className="text-center animate-fade-in">
           <h1 className="text-4xl font-bold text-white mb-2">Welcome to</h1>
@@ -36,12 +53,13 @@ export default function LoadingScreen() {
         </div>
       )}
 
-      {/* Loading Indicator */}
-      <div className="mt-12 flex gap-2">
-        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0s" }}></div>
-        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
-        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }}></div>
-      </div>
+      {showLoader && (
+        <div className="mt-12 flex gap-2 animate-fade-in">
+          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0s" }}></div>
+          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }}></div>
+        </div>
+      )}
     </div>
   )
 }

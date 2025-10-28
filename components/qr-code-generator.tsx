@@ -53,12 +53,12 @@ export default function QRCodeGenerator({ userId, userEmail }: QRCodeGeneratorPr
     setMessage("")
 
     try {
-      // Create share URL
+      // Create share URL with UUID token
       const baseUrl = window.location.origin
-      const shareToken = `${userId}-${Date.now()}`
+      const shareToken = crypto.randomUUID() // Use proper UUID instead of userId-timestamp
       const fullShareUrl = `${baseUrl}/view-records/${shareToken}`
 
-      // Save QR code to database
+      // Save QR code to database with the token
       const { error } = await supabase.from("qr_codes").insert({
         user_id: userId,
         qr_code_data: fullShareUrl,

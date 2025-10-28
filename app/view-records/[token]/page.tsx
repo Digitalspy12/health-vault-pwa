@@ -53,7 +53,24 @@ export default function ViewRecordsPage() {
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const userId = token.split("-")[0]
+        console.log("[v0] Token received:", token)
+
+        // Look up the QR code record to get the user_id
+        const { data: qrRecord, error: qrError } = await supabase
+          .from("qr_codes")
+          .select("user_id")
+          .eq("qr_code_data", `${window.location.origin}/view-records/${token}`)
+          .eq("is_active", true)
+          .single()
+
+        if (qrError || !qrRecord) {
+          console.log("[v0] QR code lookup error:", qrError)
+          setError("Invalid or expired QR code")
+          setLoading(false)
+          return
+        }
+
+        const userId = qrRecord.user_id
         console.log("[v0] Fetching records for user:", userId)
 
         // Fetch profile

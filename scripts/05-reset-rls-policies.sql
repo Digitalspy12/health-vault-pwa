@@ -85,12 +85,12 @@ CREATE POLICY "Users can insert their own documents" ON documents
 CREATE POLICY "Users can delete their own documents" ON documents
   FOR DELETE USING (auth.uid() = user_id);
 
--- QR CODES TABLE - Authenticated only
+-- QR CODES TABLE - Allow public read for token lookup, authenticated write
+CREATE POLICY "Public can view QR codes" ON qr_codes
+  FOR SELECT USING (true);
+
 CREATE POLICY "Users can insert their own QR codes" ON qr_codes
   FOR INSERT WITH CHECK (auth.uid() = user_id);
-
-CREATE POLICY "Users can view their own QR codes" ON qr_codes
-  FOR SELECT USING (auth.uid() = user_id);
 
 CREATE POLICY "Users can update their own QR codes" ON qr_codes
   FOR UPDATE USING (auth.uid() = user_id);

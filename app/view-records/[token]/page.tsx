@@ -54,36 +54,55 @@ export default function ViewRecordsPage() {
     const fetchRecords = async () => {
       try {
         const userId = token.split("-")[0]
+        console.log("[v0] Fetching records for user:", userId)
 
         // Fetch profile
-        const { data: profileData } = await supabase.from("profiles").select("*").eq("id", userId).single()
+        const { data: profileData, error: profileError } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", userId)
+          .single()
 
-        if (profileData) {
+        if (profileError) {
+          console.log("[v0] Profile fetch error:", profileError)
+        } else {
+          console.log("[v0] Profile data:", profileData)
           setProfile(profileData)
         }
 
         // Fetch medical history
-        const { data: historyData } = await supabase
+        const { data: historyData, error: historyError } = await supabase
           .from("medical_history")
           .select("*")
           .eq("user_id", userId)
           .order("diagnosis_date", { ascending: false })
 
-        if (historyData) {
-          setMedicalHistory(historyData)
+        if (historyError) {
+          console.log("[v0] Medical history fetch error:", historyError)
+        } else {
+          console.log("[v0] Medical history data:", historyData)
+          setMedicalHistory(historyData || [])
         }
 
         // Fetch documents
-        const { data: docsData } = await supabase
+        const { data: docsData, error: docsError } = await supabase
           .from("documents")
           .select("*")
           .eq("user_id", userId)
           .order("upload_date", { ascending: false })
 
-        if (docsData) {
-          setDocuments(docsData)
+        if (docsError) {
+          console.log("[v0] Documents fetch error:", docsError)
+        } else {
+          console.log("[v0] Documents data:", docsData)
+          setDocuments(docsData || [])
+        }
+
+        if (!profileData && (!historyData || historyData.length === 0) && (!docsData || docsData.length === 0)) {
+          setError("No records found for this QR code")
         }
       } catch (err) {
+        console.log("[v0] Error loading records:", err)
         setError("Error loading records")
       } finally {
         setLoading(false)

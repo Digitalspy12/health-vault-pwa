@@ -107,7 +107,7 @@
    \`\`\`sql
    SELECT tablename FROM pg_tables WHERE schemaname = 'public';
    \`\`\`
-3. You should see: `profiles`, `medical_history`, `documents`, `qr_codes`
+3. You should see: `user_profiles`, `medical_records`, `documents`, `qr_access_logs`
 
 **Step 3: Verify You're Logged In**
 - Make sure you're signed in before trying to save

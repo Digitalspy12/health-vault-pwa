@@ -38,7 +38,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             onClick={() => router.push("/dashboard/documents")}
             className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition ${
               isActive("/dashboard/documents")
-                ? "text-blue-600 bg-blue-50"
+                ? "text-primary bg-primary/10"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -52,7 +52,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             onClick={() => router.push("/dashboard/qr-code")}
             className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition ${
               isActive("/dashboard/qr-code")
-                ? "text-blue-600 bg-blue-50"
+                ? "text-primary bg-primary/10"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -65,7 +65,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <button
             onClick={() => router.push("/dashboard")}
             className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition ${
-              isActive("/dashboard") ? "text-blue-600 bg-blue-50" : "text-muted-foreground hover:text-foreground"
+              isActive("/dashboard") ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             onClick={() => router.push("/dashboard/profile")}
             className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition ${
               isActive("/dashboard/profile")
-                ? "text-blue-600 bg-blue-50"
+                ? "text-primary bg-primary/10"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >

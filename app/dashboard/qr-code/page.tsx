@@ -42,11 +42,10 @@ export default function QRCodePage() {
 
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-8">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-4 md:p-6 sticky top-0 z-10">
+      <div className="bg-gradient-to-r from-primary to-accent text-white p-4 md:p-6 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-xl md:text-2xl font-bold">QR Code</h1>
-          <p className="text-blue-100 text-xs md:text-sm">Share your medical records securely</p>
+          <p className="text-primary/70 text-xs md:text-sm">Share your medical records securely</p>
         </div>
       </div>
 
@@ -56,24 +55,23 @@ export default function QRCodePage() {
           <QRCodeGenerator userId={user?.id} userEmail={user?.email} />
         </Card>
 
-        {/* Info Section */}
         <Card className="p-4 md:p-6 bg-card border border-border mt-6">
           <h2 className="text-base md:text-lg font-bold text-card-foreground mb-4">How to Use</h2>
           <ul className="space-y-3 text-xs md:text-sm text-foreground">
             <li className="flex gap-3">
-              <span className="font-bold text-blue-500 flex-shrink-0">1.</span>
+              <span className="font-bold text-primary flex-shrink-0">1.</span>
               <span>Generate your unique QR code from this page</span>
             </li>
             <li className="flex gap-3">
-              <span className="font-bold text-blue-500 flex-shrink-0">2.</span>
+              <span className="font-bold text-primary flex-shrink-0">2.</span>
               <span>Share the QR code with healthcare providers or emergency contacts</span>
             </li>
             <li className="flex gap-3">
-              <span className="font-bold text-blue-500 flex-shrink-0">3.</span>
+              <span className="font-bold text-primary flex-shrink-0">3.</span>
               <span>Anyone can scan it with Google Lens or a QR code scanner to view your medical records</span>
             </li>
             <li className="flex gap-3">
-              <span className="font-bold text-blue-500 flex-shrink-0">4.</span>
+              <span className="font-bold text-primary flex-shrink-0">4.</span>
               <span>Your data is secure and only accessible through the QR code link</span>
             </li>
           </ul>

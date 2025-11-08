@@ -62,11 +62,10 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-8">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-4 md:p-6 sticky top-0 z-10">
+      <div className="bg-gradient-to-r from-primary to-accent text-white p-4 md:p-6 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-xl md:text-2xl font-bold">Profile Settings</h1>
-          <p className="text-blue-100 text-xs md:text-sm truncate">{user?.email}</p>
+          <p className="text-primary/70 text-xs md:text-sm truncate">{user?.email}</p>
         </div>
       </div>
 
@@ -78,17 +77,16 @@ export default function ProfilePage() {
         </div>
 
         <div className="space-y-3 mt-12 pt-6 border-t border-border">
-          {/* Theme Toggle */}
           <Card className="p-4 bg-card border border-border">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex-shrink-0 flex items-center justify-center">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex-shrink-0 flex items-center justify-center">
                   {theme === "light" ? (
-                    <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 18C8.68 18 6 15.32 6 12s2.68-6 6-6 6 2.68 6 6-2.68 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zM12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48l2.12 2.12M5.64 18.36l2.12-2.12m8.48-8.48l2.12-2.12" />
                     </svg>
                   ) : (
-                    <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                     </svg>
                   )}
@@ -102,7 +100,7 @@ export default function ProfilePage() {
               </div>
               <button
                 onClick={toggleTheme}
-                className="px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition font-medium text-sm w-full md:w-auto"
+                className="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition font-medium text-sm w-full md:w-auto"
               >
                 Toggle
               </button>

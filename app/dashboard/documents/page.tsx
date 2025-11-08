@@ -97,11 +97,10 @@ export default function DocumentsPage() {
 
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-8">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-4 md:p-6 sticky top-0 z-10">
+      <div className="bg-gradient-to-r from-primary to-accent text-white p-4 md:p-6 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-xl md:text-2xl font-bold">Medical Documents</h1>
-          <p className="text-blue-100 text-xs md:text-sm">Upload and manage your medical documents</p>
+          <p className="text-primary/70 text-xs md:text-sm">Upload and manage your medical documents</p>
         </div>
       </div>
 
@@ -128,8 +127,8 @@ export default function DocumentsPage() {
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex-shrink-0 flex items-center justify-center">
-                        <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex-shrink-0 flex items-center justify-center">
+                        <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
                         </svg>
                       </div>
@@ -151,7 +150,7 @@ export default function DocumentsPage() {
                       onClick={() => window.open(doc.file_path, "_blank")}
                       variant="outline"
                       size="sm"
-                      className="text-blue-600 hover:text-blue-700 text-xs md:text-sm"
+                      className="text-primary hover:text-primary/80 text-xs md:text-sm"
                     >
                       View
                     </Button>
